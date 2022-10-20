@@ -1,0 +1,70 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand justify-content-start">
+        <img style="height: 40px" src="../static/img/DemokrasiLogo.png" alt="">
+    </a>
+       <a class="nav-link text-white ">İDÜ Ders Takip Sistemi</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+                <li class="nav-item" >
+                    <a class="nav-link text-white"  href="{% url 'indexadmin' %}">Ana Sayfa</a>
+                </li>
+            </ul> &nbsp;
+        <div class="nav-item dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Bölümler
+        </button>
+        <div class="dropdown-menu dropdown-menu-center" aria-labelledby="dropdownMenuButton">
+
+           <a class="dropdown-item" href="{% url 'bolumadmin' %}">Bölümler</a>
+            <a class="dropdown-item" href="{% url 'dersadmin' %}">Dersler</a>
+            <a class="dropdown-item" href="{% url 'acilandersleradmin' %}">Açılan Dersler</a>
+        </div>&nbsp;
+        </div> &nbsp;
+          <div class="nav-item dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Ekle
+        </button>
+        <div class="dropdown-menu dropdown-menu-center" aria-labelledby="dropdownMenuButton">
+
+           <a class="dropdown-item" href="{% url 'yerleske' %}">Yerleşkeler</a>
+            <a class="dropdown-item" href="{% url 'sinif' %}">Sınıflar</a>
+            <a class="dropdown-item" href="{% url 'hoca' %}">Akademisyenler</a>
+        </div>
+        </div>
+          &nbsp;
+
+          &nbsp;
+          <li class="nav-item">
+          <a class="nav-link text-white" href="https://obs.idu.edu.tr">Öğrenci Bilgi Sistemi</a>
+        </li>
+          <ul class="nav">
+            <li class="nav-item dropdown margin-right">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"><span class="fa fa-user">&nbsp;</span>Hoş Geldiniz {{ user.first_name }}&nbsp;{{ user.last_name }}</a>
+          <ul class="dropdown-menu">
+              <li class="nav-item">
+          <a class="dropdown-item"  href="/admin"><span class="fa fa-unlock-alt">&nbsp;</span>Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="dropdown-item"  href="{% url 'change_password' %}"><span class="fa fa-unlock-alt">&nbsp;</span>Şifre Değiştir</a>
+        </li>
+            <li>
+                <a class="dropdown-item " href="{% url 'logout' %}"><span class="fa fa-sign-out">&nbsp</span>Çıkış Yap</a>
+            </li>
+          </ul>
+        </li>
+
+        </ul>
+      </div>
+
+  </div>
+</nav>
+
+
+
+

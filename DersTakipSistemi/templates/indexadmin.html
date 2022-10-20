@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css_files %}
+{% endblock %}
+
+{% block page_title %} Ana Sayfa {% endblock %}
+
+{% block content %}
+
+<header>
+{% include 'partials/_topbaradmin.html' %}
+
+
+</header>
+
+    <!-- Page content -->
+<div class="container-sm"  id="third">
+    {% block icerik %}
+
+
+
+    {% endblock %}
+</div>
+
+
+
+{% include 'partials/_footer.html' %}
+{% endblock %}
+

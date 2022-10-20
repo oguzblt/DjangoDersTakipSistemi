@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+<html lang="tr">
+{% load static %}
+
+{% block css_files %}
+        <link href="{% static '../static/css/giris.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block page_title %} Ana Sayfa {% endblock %}
+
+
+<body>
+{{% block content %}
+<header>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <div class="container-fluid justify-content-center">
+    <a class="navbar-brand" >
+        <img style="height: 40px" src="../static/img/DemokrasiLogo.png" alt="">
+    </a>
+       <a class="nav-link text-white " >İDÜ Ders Takip Sistemi</a>
+  </div>
+</nav>
+
+
+    <!-- Page content -->
+<div class="content align-center"  id="third"  style="background-image:url('../static/img/DemokrasiLogo.png');margin: 0;background-size:550px;background-repeat: space;background-position:center;background-attachment: fixed; " >
+<div class="login-box">
+  <h2>Sisteme Giriş Yap</h2>
+  <form method="POST" novalidate>
+        {% csrf_token %}
+       {% for error in form.non_field_errors %}
+           <div class="alert alert-danger">
+               {{ error }}
+           </div>
+       {% endfor %}
+
+        {% for field in form %}
+
+            <div class="mb-3 {% if field.errors %} invalid {% endif %}">
+                {% if field.errors %}
+                    <div class="alert alert-danger pb-0">
+                        {{ field.errors }}
+                    </div>
+                {% endif %}
+                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                {{ field }}
+            </div>
+
+        {% endfor %}
+
+{% include 'partials/_messages.html' %}
+
+        <a href=""  style="position: center">
+        <input class="btn btn-link text-white" type="submit" value="GİRİŞ YAP" >
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        </a>
+
+        <a href="{% url 'register' %}">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+         Kayıt Ol
+        </a>
+        <a href="{% url 'password_reset' %}">  Şifremi Unuttum ?</a>
+  </form>
+</div>
+</div>
+</header>
+{% include 'partials/_footer.html' %}
+
+{% endblock %}
+
+</body>
+</html>
+

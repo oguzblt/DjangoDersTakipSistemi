@@ -1,0 +1,17 @@
+{% extends 'indexadmin.html' %}
+
+
+{% block icerik %}
+
+<div class="container mt-3">
+  <h2>SINIF DÜZENLE</h2>
+  <form action="" method="POST">
+    {% csrf_token %}
+        {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+  </form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+
+
+{% block icerik %}
+{% include 'partials/_messages.html' %}
+     <h1 class="container">BÖLÜM DERSLERİ</h1>
+    <div class="container table-responsive">
+        <form class="" action="" method="get">
+           <h4 style="">Filtrelemek istediğiniz bölümü seçiniz.</h4>
+            {{ my_filter.form }}
+            <button class="btn btn-primary"  type="submit">BUL</button>
+        </form>
+  <br>
+    <table class="table table-responsive table-striped table-hover table-bordered table-light table-sm">
+    <thead class="table table-hover table-primary table-md">
+      <tr>
+        <th class="text-center">Bölümler</th>
+        <th class="text-center">Ders Kodu</th>
+        <th class="text-center">Ders Adı Tr</th>
+        <th class="text-center">Ders Adı En</th>
+        <th class="text-center">Kredi T</th>
+        <th class="text-center">Kredi U</th>
+        <th class="text-center">Kredi AKTS</th>
+        <th class="text-center">Semester</th>
+        <th class="text-center">Düzenle</th>
+        <th class="text-center">Sil</th>
+      </tr>
+    </thead>
+    <tbody id="myTable">
+        {% for i in courses %}
+            <tr>
+                <td class="text-center">{{ i.program_id}}</td>
+                <td class="text-center">{{ i.course_code}}</td>
+                <td class="text-center">{{ i.course_name_tr }}</td>
+                <td class="text-center">{{ i.course_name_en}}</td>
+                <td class="text-center">{{ i.credit_t }}</td>
+                <td class="text-center">{{ i.credit_u }}</td>
+                <td class="text-center">{{ i.credit_ects}}</td>
+                <td class="text-center">{{ i.semester}}</td>
+                <td class="text-center"><button type="button" class="btn btn-warning"><a href="{% url 'dersduzenle' i.id %}">Düzenle</a></button></td>
+                <td class="text-center"><button type="button" class="btn btn-danger"><a class="text-white" href="{% url 'derssil' i.id %}">Sil</a></button></td>
+            </tr>
+{% endfor %}
+    </tbody>
+    </table>
+
+</div>
+    <br>
+    <div class="container">
+    <div class="col-sm-4  text-white"><button type="button" class="btn btn-primary"><a class="text-white" href="{% url 'dersekle' %} " >Ekle</a></button></div>
+  </div>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable th").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+{% endblock %}

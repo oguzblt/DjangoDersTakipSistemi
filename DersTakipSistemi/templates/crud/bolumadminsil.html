@@ -1,0 +1,20 @@
+{% extends 'indexadmin.html' %}
+
+
+{% block icerik %}
+
+<div class="container bg-secondary mt-3">
+  <h2>BÖLÜM SİL</h2>
+ <p>
+            <strong>{{ program.title_tr }}</strong> isimli dersi silmek istediğinizden emin misiniz?
+
+            <form action="{% url 'bolumadminsil' program.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Evet</button>
+                <a href="{% url 'bolumadmin' %}" class="btn btn-primary">Hayır</a>
+            </form>
+
+</div>
+
+
+{% endblock %}

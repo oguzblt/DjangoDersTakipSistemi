@@ -1,0 +1,44 @@
+{% extends 'indexadmin.html' %}
+
+
+{% block icerik %}
+{% include 'partials/_messages.html' %}
+    <h1 class="container">AÇILAN DERSLER</h1>
+    <div class="container table-responsive  ">
+
+    <table class="table table-responsive table-striped table-hover table-bordered table-light table-bordered table-sm">
+    <thead class="table-primary text-center">
+      <tr>
+        <th class="text-center">Dersler</th>
+        <th class="text-center">Semester</th>
+        <th class="text-center">Akademisyenler</th>
+        <th class="text-center">Sınıf Mevcudu</th>
+        <th class="text-center">Division</th>
+        <th class="text-center">Düzenle</th>
+        <th class="text-center">Sil</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in open_courses %}
+            <tr>
+                <td class="text-center">{{ i.course_id}}</td>
+                <td class="text-center">{{ i.semester_id}}</td>
+                <td class="text-center">{{ i.instructor_id}}</td>
+                <td class="text-center">{{ i.num_students}}</td>
+                <td class="text-center">{{ i.division }}</td>
+                <td class="text-center"><button type="button" class="btn btn-warning"><a href="{% url 'acilandersadminduzenle' i.id %}">Düzenle</a></button></td>
+                <td class="text-center"><button type="button" class="btn btn-danger"><a class="text-white" href="{% url 'acilandersadminsil' i.id %}">Sil</a></button></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+    </div>
+    <br>
+    <div class="container">
+    <div class="col-sm-4  text-white"><button type="button" class="btn btn-primary"><a class="text-white" href="{% url 'acilandersadminekle' %} " >Ekle</a></button>
+    </div>
+    </div>
+
+{% endblock %}

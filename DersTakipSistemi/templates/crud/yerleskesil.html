@@ -1,0 +1,20 @@
+{% extends 'indexadmin.html' %}
+
+
+{% block icerik %}
+
+<div class="container bg-secondary mt-3">
+  <h2>YERLEŞKE SİL</h2>
+             <p>
+            <strong>{{ building.name_tr }}</strong> isimli yerleşkeyi silmek istediğinizden emin misiniz?
+
+            <form action="{% url 'yerleskesil' building.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Evet</button>
+                <a href="{% url 'yerleske' %}" class="btn btn-primary">Hayır</a>
+            </form>
+           </p>
+</div>
+
+
+{% endblock %}

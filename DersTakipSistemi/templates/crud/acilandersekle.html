@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+
+{% block icerik %}
+
+<div class="container mt-3">
+  <h2>AÇILACAK DERSİ EKLE</h2>
+  <form action="acilandersekle" method="POST">
+    {% csrf_token %}
+        {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+  </form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'indexadmin.html' %}
+
+
+{% block icerik %}
+
+<div class="container bg-secondary mt-3">
+  <h2>AÇILAN DERSİ SİL</h2>
+ <p>
+            <strong>{{ open_course.course_id }}</strong> açılan dersi silmek istediğinizden emin misiniz?
+
+            <form action="{% url 'acilandersadminsil' open_course.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Evet</button>
+                <a href="{% url 'acilandersleradmin' %}" class="btn btn-primary">Hayır</a>
+            </form>
+           </p>
+</div>
+
+
+{% endblock %}

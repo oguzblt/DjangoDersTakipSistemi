@@ -1,0 +1,5 @@
+    {% autoescape off %}  
+    Merhaba, {{ user.username }},
+    Sisteme kaydınızı onaylamak için lütfen bağlantıya tıklayın.
+    http://{{ domain }}{% url 'activate' uidb64=uid token=token %}  
+    {% endautoescape %}  

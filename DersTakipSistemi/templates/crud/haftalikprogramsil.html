@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+
+{% block icerik %}
+
+<div class="container bg-secondary mt-3">
+  <h2>HAFTALIK PROGRAMI SİL</h2>
+             <p>
+            <strong>{{ weekly_program.open_course_id }}</strong> isimli dersi silmek istediğinizden emin misiniz?
+
+            <form action="{% url 'haftalikprogramsil' weekly_program.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Evet</button>
+                <a href="{% url 'haftalıkprogram' %}" class="btn btn-primary">Hayır</a>
+            </form>
+           </p>
+</div>
+
+
+{% endblock %}

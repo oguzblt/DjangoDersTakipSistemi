@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+
+{% block icerik %}
+
+<div class="container bg-secondary mt-3">
+  <h2>BÖLÜM SİL</h2>
+ <p>
+            <strong>{{ program.title_tr }}</strong> isimli dersi silmek istediğinizden emin misiniz?
+
+            <form action="{% url 'bolumsil' program.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Evet</button>
+                <a href="{% url 'bolumler' %}" class="btn btn-primary">Hayır</a>
+            </form>
+           </p>
+</div>
+
+
+{% endblock %}

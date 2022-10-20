@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+
+
+{% block icerik %}
+    {% include 'partials/_messages.html' %}
+    <h1 class="container">HAFTALIK PROGRAM</h1>
+    <div class="container table-responsive  ">
+    <table class="table table-hover table-bordered table-light">
+    <thead class="table table-hover table-primary table-sm">
+      <tr>
+
+        <th class="text-center">Açılan Ders</th>
+        <th class="text-center">Günler</th>
+        <th class="text-center">Start</th>
+        <th class="text-center">End</th>
+          <th class="text-center">Ders Süresi</th>
+          <th class="text-center">Ders Arası</th>
+          <th class="text-center">Bina</th>
+        <th class="text-center">Sınıf</th>
+        <th class="text-center">Düzenle</th>
+        <th class="text-center">Sil</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in weekly_program %}
+            <tr>
+                <td class="text-center">{{ i.open_course_id}}</td>
+                <td class="text-center">{{ i.day_id}}</td>
+                <td class="text-center">{{ i.start}}</td>
+                <td class="text-center">{{ i.end}}</td>
+                <td class="text-center">{{ i.lesson_duration}}</td>
+                <td class="text-center">{{ i.lesson_break}}</td>
+                <td class="text-center">{{ i.building}}</td>
+                <td class="text-center">{{ i.classroom_id }}</td>
+                <td class="text-center"><button type="submit" class="btn btn-warning"><a href="{% url 'haftalikprogramduzenle' i.id %}">Düzenle</a></button></td>
+                <td class="text-center"><button type="submit" class="btn btn-danger"><a class="text-white" href="{% url 'haftalikprogramsil' i.id %}">Sil</a></button></td>
+
+            </tr>
+
+        {% endfor %}
+    </tbody>
+    </table>
+
+
+    </div>
+
+    <br>
+    <div class="container">
+    <div class="col-md-6  text-white"><button type="button" class="btn btn-primary"><a class="text-white" href="{% url 'haftalikprogramekle' %} " >Ekle</a></button>
+    </div>
+     </div>
+
+{% endblock %}

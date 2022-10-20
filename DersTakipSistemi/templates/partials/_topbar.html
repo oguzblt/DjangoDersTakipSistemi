@@ -1,0 +1,61 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand justify-content-start">
+        <img style="height: 40px" src="../static/img/DemokrasiLogo.png" alt="">
+    </a>
+       <a class="nav-link text-white ">İDÜ Ders Takip Sistemi</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item" >
+           <a class="nav-link text-white"  href="{% url 'index' %}">Ana Sayfa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'bolumler' %}">Bölümler</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="{% url 'dersler' %}">Dersler</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'acilandersler' %}">Açılan Dersler</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'haftalıkprogram' %}">Haftalık Program</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="https://obs.idu.edu.tr">Öğrenci Bilgi Sistemi</a>
+        </li>
+        <div>
+        <ul class="nav">
+            <li class="nav-item dropdown margin-right">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"><span class="fa fa-user">&nbsp;</span>Hoş Geldiniz {{ user.first_name }}&nbsp;{{ user.last_name }}</a>
+          <ul class="dropdown-menu">
+              <li class="nav-item">
+          <a class="dropdown-item"  href="/admin"><span class="fa fa-unlock-alt">&nbsp;</span>Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="dropdown-item"  href="{% url 'change_password' %}"><span class="fa fa-unlock-alt">&nbsp;</span>Şifre Değiştir</a>
+        </li>
+            <li>
+                <a class="dropdown-item " href="{% url 'logout' %}"><span class="fa fa-sign-out">&nbsp</span>Çıkış Yap</a>
+            </li>
+          </ul>
+        </li>
+
+        </ul>
+</div>
+
+      </ul>
+
+    </div>
+
+  </div>
+</nav>
+
+
+
+
